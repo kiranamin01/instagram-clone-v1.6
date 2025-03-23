@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import VerifiedBadge from "../../../../assets/images/verified.png";
+import React, { useState, useRef } from "react";
 import { BsThreeDots, BsHeart, BsHeartFill, BsChatLeft } from "react-icons/bs";
 import { RiShareForwardLine } from "react-icons/ri";
+import { MdVerified } from "react-icons/md";
 import ProfilePic from "../../../../assets/images/profile-pic-insta01.png";
 
 const Post = ({
@@ -16,6 +16,8 @@ const Post = ({
 }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(likes);
+  const [isCommentBoxOpen, setIsCommentBoxOpen] = useState(false);
+  const heartIconRef = useRef(null);
 
   const likeBtn = () => {
     setIsLiked(!isLiked);
@@ -23,20 +25,22 @@ const Post = ({
   };
 
   const doubleClick = () => {
-    const postImg = document.querySelector(`.like-btn-img-${id}`);
     if (!isLiked) {
       setIsLiked(true);
       setLikeCount((prev) => prev + 1);
     }
 
-    setTimeout(() => {
-      postImg.classList.remove("hidden", "scale-0", "text-white");
-      postImg.classList.add("scale-100", "opacity-100", "text-red-500");
+    if (heartIconRef.current) {
+      heartIconRef.current.classList.remove("hidden", "scale-0", "text-white");
+      heartIconRef.current.classList.add(
+        "scale-100",
+        "opacity-100",
+        "text-red-500"
+      );
       setTimeout(() => {
-        postImg.classList.add("scale-0");
-        postImg.classList.add("hidden");
+        heartIconRef.current?.classList.add("scale-0", "hidden");
       }, 900);
-    }, 300);
+    }
   };
 
   // Profile Details section
@@ -65,8 +69,7 @@ const Post = ({
   };
 
   const toggleCommentBox = () => {
-    const commentBox = document.querySelector(".insta_post_comment_box");
-    commentBox.classList.toggle("hidden");
+    setIsCommentBoxOpen(!isCommentBoxOpen);
   };
 
   return (
@@ -87,7 +90,7 @@ const Post = ({
                 <h4 className="insta_post_profile_username font-semibold">
                   {profile.username}
                 </h4>
-                <img className="w-4 ml-1" src={VerifiedBadge} alt="verified" />
+                <MdVerified color="" className="text-blue-400" />
               </div>
               <h3 className="insta_post_profile_location font-[Poppins] text-sm">
                 {profile.location}
@@ -109,6 +112,7 @@ const Post = ({
             alt="insta_feed_pic"
           />
           <BsHeartFill
+            ref={heartIconRef}
             className={`like-btn-img-${id} hidden text-white text-6xl absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] opacity-80 cursor-pointer scale-0 transition-transform duration-200`}
           />
         </div>
@@ -153,7 +157,11 @@ const Post = ({
           View all {comments} comments
         </h5>
       </div>
-      <div className="insta_post_comment_box fixed inset-0 bg-black/50 z-50 hidden">
+      <div
+        className={`insta_post_comment_box fixed inset-0 bg-black/50 z-50 ${
+          isCommentBoxOpen ? "" : "hidden"
+        }`}
+      >
         <div className="comment_container bg-white dark:bg-[#121212] w-full max-w-[468px] h-[70vh] absolute bottom-0 left-1/2 -translate-x-1/2 rounded-t-2xl">
           <div className="comment_header border-b border-gray-200 p-4 flex justify-between items-center">
             <h3 className="font-semibold">Comments</h3>
