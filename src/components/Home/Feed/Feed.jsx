@@ -1,5 +1,5 @@
 import React from "react";
-import Post from "./Post/post.jsx";
+import Post from "./Post/Post.jsx";
 
 import { postsData } from "../../../data/postsData";
 
