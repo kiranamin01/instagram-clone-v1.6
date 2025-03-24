@@ -1,5 +1,29 @@
 # Changelog
 
+## [v1.6.1] - 2025-03-24
+
+### Story Feature Updates
+
+- Added gradient border effect for viewed stories
+- Implemented admin story functionality with custom image
+- Added color transition for viewed story indicators
+- Enhanced story border styling with gradient animations
+- Improved story interaction feedback
+- Added separate handling for admin and user stories
+
+### Enhanced Story Feature
+
+- Implemented interactive story modal with full-screen view
+- Added profile information display in story header
+- Integrated verified badge for story profiles
+- Added message input and interaction buttons
+- Enhanced story navigation with proper indexing
+- Improved story UI with proper spacing and layout
+- Added close button with semi-transparent background
+- Implemented responsive design for story modal
+- Enhanced image display with proper aspect ratio
+- Added dark mode support for story modal
+
 ## [v1.6] - 2025-03-23
 
 ### Added
