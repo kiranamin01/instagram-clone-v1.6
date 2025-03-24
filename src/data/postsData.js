@@ -373,7 +373,8 @@ export const postsData = [
       image: "https://avatar.iran.liara.run/public/boy?username=rahul",
       location: "Shimla, Himachal Pradesh",
     },
-    postImage: "https://images.unsplash.com/photo-1586687338605-c78culk8d4a8",
+    postImage:
+      "https://images.unsplash.com/photo-1562649846-ab413ca01712?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     likes: 2876,
     description: "Snow-capped peaks and cozy cafes ❄️ #ShimlaDiaries",
     comments: 156,
@@ -455,7 +456,8 @@ export const postsData = [
       image: "https://avatar.iran.liara.run/public/girl?username=nisha",
       location: "Ooty, Tamil Nadu",
     },
-    postImage: "https://images.unsplash.com/photo-1582531763212-99776540c0ce",
+    postImage:
+      "https://images.unsplash.com/flagged/photo-1582360694694-1eb3d0947263?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     likes: 2987,
     description: "Tea plantations for miles 🍃 #OotyVibes",
     comments: 167,
@@ -506,7 +508,8 @@ export const postsData = [
       image: "https://avatar.iran.liara.run/public/girl?username=tanya",
       location: "Hampi, Karnataka",
     },
-    postImage: "https://images.unsplash.com/photo-1600507216475-33f5dd89c169",
+    postImage:
+      "https://images.unsplash.com/photo-1620766182966-c6eb5ed2b788?q=80&w=1048&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     likes: 2654,
     description: "Ancient ruins and boulders 🏛️ #HampiExploration",
     comments: 178,
@@ -557,7 +560,8 @@ export const postsData = [
       image: "https://avatar.iran.liara.run/public/girl?username=pooja",
       location: "Pushkar, Rajasthan",
     },
-    postImage: "https://images.unsplash.com/photo-1590766740016-50b949ad8ee3",
+    postImage:
+      "https://images.unsplash.com/photo-1616693139578-f1c17deb0d4f?q=80&w=1035&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     likes: 2891,
     description: "Desert festival vibes 🐪 #PushkarFair",
     comments: 201,
@@ -610,7 +614,8 @@ export const postsData = [
       image: "https://avatar.iran.liara.run/public/girl?username=mira",
       location: "Amritsar, Punjab",
     },
-    postImage: "https://images.unsplash.com/photo-1588665343610-daab8d5a03fb",
+    postImage:
+      "https://images.unsplash.com/photo-1623059508779-2542c6e83753?q=80&w=927&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     likes: 3876,
     description: "Golden Temple serenity ✨ #Blessed",
     comments: 267,

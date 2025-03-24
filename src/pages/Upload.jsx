@@ -59,21 +59,19 @@ const Upload = () => {
   return (
     <div>
       <nav className="upload-nav bg-[#FAFAFA] dark:bg-[#121212] rounded-lg py-2">
-        <h2 className="text-2xl text-center font-[Poppins] dark:text-white">
-          Generate New Post
-        </h2>
+        <h2 className="text-2xl text-center font-[Poppins] dark:text-white"></h2>
         <div className="upload-container flex justify-center">
-          <div className="upload-option flex justify-between items-center m-3 bg-white dark:bg-[#262626] border-2 dark:border-gray-700 py-1 px-4 rounded-xl w-[80%]">
+          <div className="upload-option flex justify-between items-center m-3 bg-white dark:bg-[#262626] border-2 dark:border-gray-700 py-1 px-3 rounded-full w-[80%] dark:text-white hover:bg-gray-600">
             <button className="uppercase font-medium py-2 px-4 rounded-lg bg-gray-100 dark:bg-gray-700 text-black dark:text-white hover:bg-gray-200 dark:hover:bg-gray-600 transition-all">
               Post
             </button>
-            <button className="uppercase font-medium py-2 px-4 rounded-lg hover:bg-gray-100 transition-all">
+            <button className="uppercase font-medium py-2 px-4 rounded-3xl hover:bg-gray-600 transition-all">
               Story
             </button>
-            <button className="uppercase font-medium py-2 px-4 rounded-lg hover:bg-gray-100 transition-all">
+            <button className="uppercase font-medium py-2 px-4 rounded-3xl hover:bg-gray-600 transition-all">
               Reel
             </button>
-            <button className="uppercase font-medium py-2 px-4 rounded-lg hover:bg-gray-100 transition-all">
+            <button className="uppercase font-medium py-2 px-4 rounded-3xl hover:bg-gray-600 transition-all">
               Profile
             </button>
           </div>
@@ -83,9 +81,7 @@ const Upload = () => {
       <div className="upload-main flex justify-center border-2 border-bg-gray-100 dark:border-gray-700">
         <div className="upload-main-container w-full bg-[#FAFAFA] dark:bg-[#121212] rounded-lg p-4 flex flex-col justify-center items-center">
           <div className="upload-main-container-header flex justify-between items-center">
-            <h2 className="text-2xl font-[Poppins] dark:text-white">
-              Create Post
-            </h2>
+            <h2 className="text-2xl font-mono dark:text-white">Create Post</h2>
           </div>
           <div className="upload-main-container-body w-full max-w-2xl">
             <div className="upload-main-container-body-input">
@@ -136,7 +132,7 @@ const Upload = () => {
                   <h2 className="text-2xl font-bold text-gray-500 dark:text-gray-300 mt-5">
                     POST IMAGE
                   </h2>
-                  <FcAddImage className="text-6xl my-12" />
+                  <FcAddImage className="text-8xl my-4" />
                   <input
                     type="text"
                     value={postData.postImage}
@@ -150,7 +146,7 @@ const Upload = () => {
                 </div>
               </div>
 
-              <div className="my-10">
+              <div className="my-16">
                 <label className="text-gray-700 dark:text-gray-300 text-lg mb-2 block">
                   Description:
                   <input
@@ -166,7 +162,7 @@ const Upload = () => {
               <div className="flex justify-center w-full mb-14">
                 <button
                   onClick={handleSubmit}
-                  className="upload-post-btn bg-green-600 py-3 px-8 rounded-md text-white text-[Poppins] text-xl font-bold hover:bg-green-700 transition-all"
+                  className="upload-post-btn bg-blue-500/80 py-3 px-8 rounded-md text-white text-[Poppins] text-xl font-bold hover:bg-gray-100 transition-all border-2 border-gray-600 hover:text-blue-500/80"
                 >
                   SUBMIT
                 </button>

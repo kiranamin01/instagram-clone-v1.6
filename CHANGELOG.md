@@ -2,6 +2,14 @@
 
 ## [v1.6.1] - 2025-03-24
 
+### Enhanced Comment System
+
+- Improved comment box positioning to appear above footer
+- Enhanced dark mode styling for comment interface
+- Updated modal layout for better user experience
+- Fixed comment box border radius for floating design
+- Improved form positioning within comment container
+
 ### Story Feature Updates
 
 - Added gradient border effect for viewed stories
