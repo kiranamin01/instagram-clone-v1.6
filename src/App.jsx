@@ -10,7 +10,7 @@ import Upload from "./pages/Upload";
 function App() {
   return (
     <BrowserRouter>
-      <div className="relative max-w-[470px] mx-auto">
+      <div className="relative max-w-[470px] mx-auto scrollbar-hide">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<Search />} />

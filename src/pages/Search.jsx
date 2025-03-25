@@ -11,7 +11,7 @@ const Search = () => {
 
   return (
     <>
-      <div className="max-w-[468px] mx-auto bg-white min-h-screen pb-16 dark:bg-[#121212]">
+      <div className="max-w-[468px] mx-auto bg-white min-h-screen pb-16 dark:bg-[#121212] overflow-y-auto scrollbar-hide">
         <SearchBar onSearch={handleSearch} />
         <div className="mt-32">
           <ImageGrid searchQuery={searchTerm} />

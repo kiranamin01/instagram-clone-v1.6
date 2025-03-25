@@ -18,6 +18,28 @@ export const profileData = [
         userImage: "https://avatar.iran.liara.run/public/boy?username=punjab",
         comment: "Waheguru ji!",
       },
+      {
+        username: "mountain_lover",
+        userImage:
+          "https://avatar.iran.liara.run/public/girl?username=mountain_lover",
+        comment: "The colors are absolutely breathtaking! 🌄",
+      },
+      {
+        username: "adventure_seeker",
+        userImage:
+          "https://avatar.iran.liara.run/public/boy?username=adventure",
+        comment: "Adding this to my bucket list! ⛰️",
+      },
+      {
+        username: "photo_enthusiast",
+        userImage: "https://avatar.iran.liara.run/public/girl?username=photo",
+        comment: "Perfect composition and timing! What camera did you use?",
+      },
+      {
+        username: "swiss_local",
+        userImage: "https://avatar.iran.liara.run/public/boy?username=swiss",
+        comment: "I can see my village from here! Home sweet home 🏠",
+      },
     ],
   },
   {
@@ -36,6 +58,22 @@ export const profileData = [
         username: "beach_lover",
         userImage: "https://avatar.iran.liara.run/public/girl?username=beach",
         comment: "Those colors are incredible!",
+      },
+      {
+        username: "sunrise_chaser",
+        userImage: "https://avatar.iran.liara.run/public/girl?username=sunrise",
+        comment:
+          "Early morning vibes are the best! 🌅 Worth waking up for this.",
+      },
+      {
+        username: "island_hopper",
+        userImage: "https://avatar.iran.liara.run/public/boy?username=island",
+        comment: "The Maldives never disappoints! Which resort is this?",
+      },
+      {
+        username: "travel_photographer",
+        userImage: "https://avatar.iran.liara.run/public/girl?username=travel",
+        comment: "The way the light hits the water is just perfect! 📸",
       },
     ],
   },
@@ -56,6 +94,31 @@ export const profileData = [
         userImage: "https://avatar.iran.liara.run/public/girl?username=urban",
         comment: "This city is magical at night",
       },
+      {
+        username: "tokyo_foodie",
+        userImage: "https://avatar.iran.liara.run/public/girl?username=foodie",
+        comment: "Best city for night street food! 🍜",
+      },
+      {
+        username: "neon_photographer",
+        userImage: "https://avatar.iran.liara.run/public/boy?username=neon",
+        comment: "Those neon lights are everything! Perfect exposure 📸",
+      },
+      {
+        username: "anime_lover",
+        userImage: "https://avatar.iran.liara.run/public/girl?username=anime",
+        comment: "Akihabara vibes! Makes me want to visit again ✨",
+      },
+      {
+        username: "sakura_fan",
+        userImage: "https://avatar.iran.liara.run/public/girl?username=sakura",
+        comment: "Spring magic! 🌸",
+      },
+      {
+        username: "japan_lover",
+        userImage: "https://avatar.iran.liara.run/public/boy?username=japan",
+        comment: "Perfect hanami season",
+      },
     ],
   },
   {
@@ -75,92 +138,6 @@ export const profileData = [
         userImage: "https://avatar.iran.liara.run/public/girl?username=sand",
         comment: "Nature's art at its finest",
       },
-    ],
-  },
-  {
-    src: "https://images.unsplash.com/photo-1741034793661-3bd2a33d5b1b",
-    description: "Forest Waterfall",
-    location: "Amazon Rainforest",
-    likeCount: 2789,
-    commentCount: 198,
-    commentData: [
-      {
-        username: "nature_lover",
-        userImage: "https://avatar.iran.liara.run/public/girl?username=nature",
-        comment: "Pure serenity! 🌿",
-      },
-      {
-        username: "waterfall_chaser",
-        userImage:
-          "https://avatar.iran.liara.run/public/boy?username=waterfall",
-        comment: "The power of nature is incredible",
-      },
-    ],
-  },
-  {
-    src: "https://plus.unsplash.com/premium_photo-1675827055694-010aef2cf08f",
-    description: "Northern Lights",
-    location: "Iceland",
-    likeCount: 4532,
-    commentCount: 312,
-    commentData: [
-      {
-        username: "aurora_hunter",
-        userImage: "https://avatar.iran.liara.run/public/boy?username=aurora",
-        comment: "Magic in the sky! ✨",
-      },
-      {
-        username: "nordic_soul",
-        userImage: "https://avatar.iran.liara.run/public/girl?username=nordic",
-        comment: "Nature's light show is breathtaking",
-      },
-    ],
-  },
-  {
-    src: "https://images.unsplash.com/photo-1740927726070-26542d1a9b04",
-    description: "Ancient Temple",
-    location: "Bali, Indonesia",
-    likeCount: 2345,
-    commentCount: 178,
-    commentData: [
-      {
-        username: "temple_seeker",
-        userImage: "https://avatar.iran.liara.run/public/boy?username=temple",
-        comment: "Such spiritual vibes 🙏",
-      },
-      {
-        username: "culture_buff",
-        userImage: "https://avatar.iran.liara.run/public/girl?username=culture",
-        comment: "The architecture is stunning!",
-      },
-    ],
-  },
-  {
-    src: "https://plus.unsplash.com/premium_photo-1675826774815-35b8a48ddc2c",
-    description: "Mountain Lake",
-    location: "Canadian Rockies",
-    likeCount: 3167,
-    commentCount: 223,
-    commentData: [
-      {
-        username: "mountain_soul",
-        userImage: "https://avatar.iran.liara.run/public/boy?username=mountain",
-        comment: "Mirror-like reflection! 🏔️",
-      },
-      {
-        username: "lake_explorer",
-        userImage: "https://avatar.iran.liara.run/public/girl?username=lake",
-        comment: "The water is so crystal clear!",
-      },
-    ],
-  },
-  {
-    src: "https://images.unsplash.com/photo-1518495973542-4542c06a5843",
-    description: "Autumn Forest",
-    location: "Vermont, USA",
-    likeCount: 2891,
-    commentCount: 201,
-    commentData: [
       {
         username: "fall_lover",
         userImage: "https://avatar.iran.liara.run/public/girl?username=fall",
@@ -173,14 +150,32 @@ export const profileData = [
         comment: "Perfect autumn vibes",
       },
     ],
+    // Autumn Forest entry
+
+    // Golden Gate Bridge entry
   },
   {
-    src: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0",
-    description: "Golden Gate Bridge",
-    location: "San Francisco, USA",
-    likeCount: 4123,
-    commentCount: 321,
+    src: "https://images.unsplash.com/photo-1518495973542-4542c06a5843",
+    description: "Autumn Forest",
+    location: "Vermont, USA",
+    likeCount: 2891,
+    commentCount: 201,
     commentData: [
+      {
+        username: "vermont_local",
+        userImage: "https://avatar.iran.liara.run/public/girl?username=vermont",
+        comment: "Our state looking gorgeous as always! 🍂",
+      },
+      {
+        username: "autumn_vibes",
+        userImage: "https://avatar.iran.liara.run/public/boy?username=autumn",
+        comment: "Peak foliage season captured perfectly!",
+      },
+      {
+        username: "hiking_guide",
+        userImage: "https://avatar.iran.liara.run/public/girl?username=hiking",
+        comment: "Best hiking trails this time of year 🥾",
+      },
       {
         username: "city_explorer",
         userImage: "https://avatar.iran.liara.run/public/boy?username=city",
@@ -192,25 +187,7 @@ export const profileData = [
         comment: "San Francisco's beauty captured perfectly",
       },
     ],
-  },
-  {
-    src: "https://images.unsplash.com/photo-1521295121783-8a321d551ad2",
-    description: "Cherry Blossoms",
-    location: "Kyoto, Japan",
-    likeCount: 3789,
-    commentCount: 287,
-    commentData: [
-      {
-        username: "sakura_fan",
-        userImage: "https://avatar.iran.liara.run/public/girl?username=sakura",
-        comment: "Spring magic! 🌸",
-      },
-      {
-        username: "japan_lover",
-        userImage: "https://avatar.iran.liara.run/public/boy?username=japan",
-        comment: "Perfect hanami season",
-      },
-    ],
+    // Cherry Blossoms entry
   },
   {
     src: "https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -286,6 +263,113 @@ export const profileData = [
         username: "startup_founder",
         userImage: "https://avatar.iran.liara.run/public/girl?username=startup",
         comment: "Innovation hub vibes",
+      },
+    ],
+  },
+  {
+    src: "https://images.unsplash.com/photo-1633321088355-d0f81134ca3b",
+    description: "Coastal Sunset",
+    location: "Amalfi Coast, Italy",
+    likeCount: 3245,
+    commentCount: 178,
+    commentData: [
+      {
+        username: "italian_dreamer",
+        userImage: "https://avatar.iran.liara.run/public/girl?username=italian",
+        comment: "La dolce vita! 🌅",
+      },
+      {
+        username: "travel_guide",
+        userImage:
+          "https://avatar.iran.liara.run/public/boy?username=travelguide",
+        comment: "Best spot for aperitivo in Positano!",
+      },
+      {
+        username: "sunset_lover",
+        userImage: "https://avatar.iran.liara.run/public/girl?username=sunset",
+        comment: "Those Mediterranean colors are unreal 😍",
+      },
+      {
+        username: "yacht_life",
+        userImage: "https://avatar.iran.liara.run/public/boy?username=yacht",
+        comment: "Perfect sailing conditions today! ⛵",
+      },
+      {
+        username: "photography_pro",
+        userImage:
+          "https://avatar.iran.liara.run/public/girl?username=photopro",
+        comment: "The golden hour lighting is perfect here",
+      },
+    ],
+  },
+  {
+    src: "https://images.unsplash.com/photo-1682695796497-31a44224d6d6",
+    description: "Urban Garden",
+    location: "Singapore",
+    likeCount: 2876,
+    commentCount: 156,
+    commentData: [
+      {
+        username: "green_thumb",
+        userImage: "https://avatar.iran.liara.run/public/girl?username=garden",
+        comment: "Gardens by the Bay is magical! 🌿",
+      },
+      {
+        username: "city_planner",
+        userImage: "https://avatar.iran.liara.run/public/boy?username=planner",
+        comment: "This is how you integrate nature into urban spaces",
+      },
+      {
+        username: "eco_warrior",
+        userImage: "https://avatar.iran.liara.run/public/girl?username=eco",
+        comment: "Sustainable architecture at its finest! 🌱",
+      },
+      {
+        username: "night_photographer",
+        userImage:
+          "https://avatar.iran.liara.run/public/boy?username=nightphoto",
+        comment: "The light show here is incredible",
+      },
+      {
+        username: "singapore_local",
+        userImage:
+          "https://avatar.iran.liara.run/public/girl?username=singapore",
+        comment: "Our city's crown jewel! 🇸🇬",
+      },
+    ],
+  },
+  {
+    src: "https://images.unsplash.com/photo-1682695797221-8164ff1fafc9",
+    description: "Street Food Market",
+    location: "Bangkok, Thailand",
+    likeCount: 3567,
+    commentCount: 234,
+    commentData: [
+      {
+        username: "food_explorer",
+        userImage: "https://avatar.iran.liara.run/public/boy?username=foodie",
+        comment: "Thai street food is unbeatable! 🍜",
+      },
+      {
+        username: "chef_life",
+        userImage: "https://avatar.iran.liara.run/public/girl?username=chef",
+        comment: "Those authentic flavors! Need the recipe",
+      },
+      {
+        username: "travel_foodie",
+        userImage:
+          "https://avatar.iran.liara.run/public/boy?username=travelfood",
+        comment: "Best pad thai I've ever had! 🥢",
+      },
+      {
+        username: "local_guide",
+        userImage: "https://avatar.iran.liara.run/public/girl?username=guide",
+        comment: "This market is a must-visit in Bangkok",
+      },
+      {
+        username: "night_market_lover",
+        userImage: "https://avatar.iran.liara.run/public/boy?username=market",
+        comment: "The atmosphere here is electric! 🏮",
       },
     ],
   },

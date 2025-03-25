@@ -28,7 +28,7 @@ const ProfileBio = () => {
         </div>
         <div className="flex justify-around w-full mb-4">
           <div>
-            <div className="text-center font-semibold">11</div>
+            <div className="text-center font-semibold">15</div>
             <div className="text-center text-sm text-gray-600 dark:text-gray-300">
               Posts
             </div>

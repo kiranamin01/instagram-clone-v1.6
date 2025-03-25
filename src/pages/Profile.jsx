@@ -6,7 +6,7 @@ import ProfileStatusSave from "../components/Profile/ProfileStatusSave";
 
 const Profile = () => {
   return (
-    <div className="max-w-[470px] mx-auto bg-white min-h-screen">
+    <div className="max-w-[470px] mx-auto bg-white min-h-screen overflow-y-auto scrollbar-hide">
       <ProfileNav />
       <ProfileBio />
       <ProfileStatusSave />

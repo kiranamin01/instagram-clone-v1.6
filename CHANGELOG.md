@@ -1,5 +1,16 @@
 # Changelog
 
+## [v1.6.2] - 2025-03-25
+
+### Updated ProfileData
+
+### Dark Mode Enhancements
+
+- Updated global background color for dark mode consistency
+- Improved dark mode toggle button styling
+- Enhanced color transitions for smoother theme switching
+- Fixed background color inconsistencies outside app container
+
 ## [v1.6.1] - 2025-03-24
 
 ### Enhanced Comment System

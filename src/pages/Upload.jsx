@@ -39,11 +39,8 @@ const Upload = () => {
       commentData: [],
     };
 
-    // Add to postsData array
     postsData.unshift(newPost);
-    console.log("Updated postsData:", postsData);
 
-    // Reset form
     setPostData({
       profileImage: "",
       username: "",
@@ -52,12 +49,11 @@ const Upload = () => {
       description: "",
     });
 
-    // Optional: Show success message
     alert("Post created successfully!");
   };
 
   return (
-    <div>
+    <div className="scrollbar-hide">
       <nav className="upload-nav bg-[#FAFAFA] dark:bg-[#121212] rounded-lg py-2">
         <h2 className="text-2xl text-center font-[Poppins] dark:text-white"></h2>
         <div className="upload-container flex justify-center">
@@ -128,21 +124,23 @@ const Upload = () => {
               </div>
 
               <div className="upload-post-img">
-                <div className="upload-post-img-box bg-slate-300 dark:bg-gray-700 flex flex-col justify-center items-center rounded-md mt-10 p-4">
-                  <h2 className="text-2xl font-bold text-gray-500 dark:text-gray-300 mt-5">
-                    POST IMAGE
-                  </h2>
-                  <FcAddImage className="text-8xl my-4" />
-                  <input
-                    type="text"
-                    value={postData.postImage}
-                    onChange={(e) => handleInputChange(e, "postImage")}
-                    placeholder="Add Post Image Link"
-                    className="w-full border-2 border-gray-600 dark:border-gray-500 rounded-lg p-2 bg-transparent dark:text-white dark:placeholder-gray-400 bg-yellow-50"
-                  />
-                  <button className="upload-post-img-btn bg-green-600 py-2 px-6 mt-6 mb-4 rounded-md text-white text-[Poppins] text-xl font-bold hover:bg-green-700 transition-all">
-                    UPLOAD
-                  </button>
+                <div className="overflow-y-auto scrollbar-hide">
+                  <div className="upload-post-img-box bg-slate-300 dark:bg-gray-700 flex flex-col justify-center items-center rounded-md mt-10 p-4">
+                    <h2 className="text-2xl font-bold text-gray-500 dark:text-gray-300 mt-5">
+                      POST IMAGE
+                    </h2>
+                    <FcAddImage className="text-8xl my-4" />
+                    <input
+                      type="text"
+                      value={postData.postImage}
+                      onChange={(e) => handleInputChange(e, "postImage")}
+                      placeholder="Add Post Image Link"
+                      className="w-full border-2 border-gray-600 dark:border-gray-500 rounded-lg p-2 bg-transparent dark:text-white dark:placeholder-gray-400 bg-yellow-50"
+                    />
+                    <button className="upload-post-img-btn bg-green-600 py-2 px-6 mt-6 mb-4 rounded-md text-white text-[Poppins] text-xl font-bold hover:bg-green-700 transition-all">
+                      UPLOAD
+                    </button>
+                  </div>
                 </div>
               </div>
 

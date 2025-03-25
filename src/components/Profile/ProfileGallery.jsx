@@ -133,7 +133,7 @@ const ProfileGallery = () => {
         </div>
 
         {/* Gallery */}
-        <div className="profile-gallery-images grid grid-cols-3 gap-[1px] max-w-[470px] mx-auto">
+        <div className="profile-gallery-images grid grid-cols-3 gap-[1px] max-w-[470px] mx-auto mb-12">
           {profileData.map((image, index) => (
             <div key={index} className="aspect-[3/4]">
               <img
