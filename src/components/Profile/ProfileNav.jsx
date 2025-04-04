@@ -1,12 +1,21 @@
 import React from "react";
 
+import { logout } from "../../utils/auth";
+
 const ProfileNav = () => {
   return (
     <nav
       className="sticky top-0 flex justify-between items-center p-4 border-b bg-[#FAFAFA]
     dark:bg-[#121212] dark:border-gray-800 dark:text-white"
     >
-      <div className="text-lg font-semibold"></div>
+      <div className="text-xs font-semibold">
+        <button
+          onClick={logout}
+          className="w-full px-2 py-1 text-red-500 font-semibold border border-red-500 rounded-md hover:bg-red-50 dark:hover:bg-red-900/20"
+        >
+          Log Out
+        </button>
+      </div>
       <div className="text-xl font-bold">
         <span className="mr-2">kiranamin.img</span>
         <svg
