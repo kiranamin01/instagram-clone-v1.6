@@ -1,6 +1,19 @@
 # Changelog
 
-## [v1.6.2] - 2025-03-25
+## [v1.6.2] - 2025-04-09
+
+### Authentication System Implementation
+
+- Added user registration with automatic login
+- Implemented secure login functionality with JWT
+- Added password visibility toggle in login/register forms
+- Enhanced form validation and error handling
+- Implemented protected routes for authenticated users
+- Added logout functionality
+- Improved authentication state management
+- Enhanced dark mode support for auth forms
+- Added proper navigation between login and register pages
+- Integrated with MongoDB for user data storage
 
 ### Updated ProfileData
 
