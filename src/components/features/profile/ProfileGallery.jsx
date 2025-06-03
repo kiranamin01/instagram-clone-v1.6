@@ -1,21 +1,101 @@
-import React, { useState } from "react";
-import PostImg from "../../assets/images/BorivaliPic.jpg";
+import React, { useState, useEffect, useRef } from "react";
+// import PostImg from "../../assets/images/BorivaliPic.jpg";
 import { BsThreeDots, BsHeartFill, BsChatLeft } from "react-icons/bs";
 import { RiShareForwardLine } from "react-icons/ri";
-import VerifiedBadge from "../../assets/images/verified.png";
-import ProfilePic from "../../assets/images/profile-pic-insta01.png";
-import { profileData } from "../../data/profileData";
+import VerifiedBadge from "../../../assets/images/verified.png";
+import ProfilePic from "../../../assets/images/profile-pic-insta01.png";
+import { profileData } from "../../../data/profileData";
+
+const LazyImage = ({ src, alt, onClick }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const imageRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (imageRef.current) {
+      observer.observe(imageRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={imageRef}
+      className="relative aspect-[3/4] bg-gray-100 dark:bg-gray-800"
+      onClick={onClick}
+    >
+      {isInView && (
+        <>
+          <div
+            className={`absolute inset-0 flex items-center justify-center ${
+              isLoaded ? "hidden" : ""
+            }`}
+          >
+            <div className="w-8 h-8 border-2 border-gray-300 border-t-gray-600 rounded-full animate-spin"></div>
+          </div>
+          <img
+            src={src}
+            alt={alt}
+            className={`w-full h-full object-cover cursor-pointer transition-opacity duration-300 ${
+              isLoaded ? "opacity-100" : "opacity-0"
+            }`}
+            onLoad={() => setIsLoaded(true)}
+          />
+        </>
+      )}
+    </div>
+  );
+};
 
 const ProfileGallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [commentsData, setCommentsData] = useState([]);
   const [isCommentBoxOpen, setIsCommentBoxOpen] = useState(false);
+  const [visibleImages, setVisibleImages] = useState([]);
+  const galleryRef = useRef(null);
 
   const profile = {
     username: "kiranamin.img",
     image: ProfilePic,
     location: "Borivali",
   };
+
+  useEffect(() => {
+    const loadInitialImages = () => {
+      setVisibleImages(profileData.slice(0, 9));
+    };
+
+    const handleScroll = () => {
+      if (!galleryRef.current) return;
+
+      const rect = galleryRef.current.getBoundingClientRect();
+      const isBottom = rect.bottom <= window.innerHeight + 100;
+
+      if (isBottom && visibleImages.length < profileData.length) {
+        const nextBatch = profileData.slice(
+          visibleImages.length,
+          visibleImages.length + 6
+        );
+        setVisibleImages((prev) => [...prev, ...nextBatch]);
+      }
+    };
+
+    loadInitialImages();
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [visibleImages.length]);
 
   const handleOpenModal = (image) => {
     setSelectedImage(image);
@@ -60,7 +140,7 @@ const ProfileGallery = () => {
         {/* Modal */}
         <div
           onClick={handleCloseModal}
-          className="hidden modal bg-black bg-opacity-80 absolute top-0 w-full h-full justify-center items-center"
+          className="hidden modal bg-black bg-opacity-80 fixed inset-0 z-50 justify-center items-center"
         >
           <div
             className="postbox bg-[#FAFAFA] dark:bg-[#262626] fixed top-20 w-full max-w-[468px] h-[700px] rounded-xl overflow-hidden mx-4"
@@ -100,12 +180,14 @@ const ProfileGallery = () => {
               </div>
             </div>
 
-            <div className="post-image h-[580px]">
-              <img
-                src={selectedImage?.src || PostImg}
-                className="w-full h-full object-contain bg-black"
-                alt={selectedImage?.description || "Post"}
-              />
+            <div className="post-image h-[585px] relative bg-black flex items-center justify-center">
+              {selectedImage && (
+                <img
+                  src={selectedImage.src}
+                  alt={selectedImage.description || "Post"}
+                  className="max-h-full max-w-full object-contain"
+                />
+              )}
             </div>
 
             <div className="post-btn w-full flex items-center px-4 h-[70px] border-t border-gray-200 dark:border-gray-700">
@@ -133,19 +215,22 @@ const ProfileGallery = () => {
         </div>
 
         {/* Gallery */}
-        <div className="profile-gallery-images grid grid-cols-3 gap-[1px] max-w-[470px] mx-auto mb-12">
-          {profileData.map((image, index) => (
-            <div key={index} className="aspect-[3/4]">
-              <img
-                onClick={() => handleOpenModal(image)}
-                src={image.src}
-                alt={image.description}
-                className="w-full h-full object-cover cursor-pointer"
-              />
-            </div>
+        <div
+          ref={galleryRef}
+          className="profile-gallery-images grid grid-cols-3 gap-[1px] max-w-[470px] mx-auto mb-12"
+        >
+          {visibleImages.map((image, index) => (
+            <LazyImage
+              key={index}
+              src={image.src}
+              alt={image.description}
+              onClick={() => handleOpenModal(image)}
+            />
           ))}
         </div>
       </section>
+
+      {/* Comments Section */}
       <section className="insta_post-comment">
         <div
           className={`insta_post_comment_box fixed inset-0 bg-black/50 z-50 ${

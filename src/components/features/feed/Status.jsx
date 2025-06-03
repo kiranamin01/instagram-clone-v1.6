@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import ProfilePic from "../../assets/images/profile-pic-insta01.png";
+import ProfilePic from "../../../assets/images/profile-pic-insta01.png";
 import { BsHeart, BsSend, BsShare, BsThreeDotsVertical } from "react-icons/bs";
 import { MdVerified } from "react-icons/md";
-import { storyData } from "../../data/storyData";
-import AdminStory from "../../assets/images/BorivaliPic.jpg";
+import { storyData } from "../../../data/storyData";
+import AdminStory from "../../../assets/images/BorivaliPic.jpg";
 
 const Status = () => {
   const [showStatusModal, setShowStatusModal] = useState(false);

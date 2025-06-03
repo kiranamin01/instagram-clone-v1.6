@@ -1,8 +1,8 @@
 import React from "react";
-import ProfileGallery from "../components/Profile/ProfileGallery";
-import ProfileNav from "../components/Profile/ProfileNav";
-import ProfileBio from "../components/Profile/ProfileBio";
-import ProfileStatusSave from "../components/Profile/ProfileStatusSave";
+import ProfileGallery from "../components/features/profile/ProfileGallery";
+import ProfileNav from "../components/features/profile/ProfileNav";
+import ProfileBio from "../components/features/profile/ProfileBio";
+import ProfileStatusSave from "../components/features/profile/ProfileStatusSave";
 
 const Profile = () => {
   return (

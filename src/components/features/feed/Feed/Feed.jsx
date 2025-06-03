@@ -1,7 +1,7 @@
 import React from "react";
 import Post from "./Post/Post.jsx";
 
-import { postsData } from "../../../data/postsData";
+import { postsData } from "../../../../data/postsData.js";
 
 const Feed = () => {
   return (

@@ -1,173 +1,226 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { IoMdAddCircleOutline } from "react-icons/io";
-import { CgEnter } from "react-icons/cg";
-import { FaUserCircle } from "react-icons/fa";
-import { FaLocationDot } from "react-icons/fa6";
-import { FcAddImage } from "react-icons/fc";
-import { IoLink } from "react-icons/io5";
-import { postsData } from "../data/postsData";
+import { FaImage, FaSpinner } from "react-icons/fa";
+import { MdLocationOn } from "react-icons/md";
+import { motion } from "motion/react";
 
 const Upload = () => {
+  const navigate = useNavigate();
+  const fileInputRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [preview, setPreview] = useState(null);
+  const [activeTab, setActiveTab] = useState("post");
+
   const [postData, setPostData] = useState({
-    profileImage: "",
-    username: "",
+    imageFile: null,
+    caption: "",
     location: "",
-    postImage: "",
-    description: "",
   });
 
-  const handleInputChange = (e, field) => {
-    setPostData({
-      ...postData,
-      [field]: e.target.value,
-    });
+  const handleImageSelect = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setPostData({ ...postData, imageFile: file });
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
-  const handleSubmit = () => {
-    const newPost = {
-      id: Date.now(),
-      profile: {
-        username: postData.username,
-        image: postData.profileImage,
-        location: postData.location,
-      },
-      postImage: postData.postImage,
-      likes: 0,
-      description: postData.description,
-      comments: 0,
-      likedBy: "user.name",
-      commentData: [],
-    };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
 
-    postsData.unshift(newPost);
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("Please login first");
+      }
 
-    setPostData({
-      profileImage: "",
-      username: "",
-      location: "",
-      postImage: "",
-      description: "",
-    });
+      // First upload image to cloud storage
+      const formData = new FormData();
+      formData.append("image", postData.imageFile);
 
-    alert("Post created successfully!");
+      const imageUploadResponse = await fetch(
+        "http://localhost:5000/api/upload",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          body: formData,
+        }
+      );
+
+      const imageData = await imageUploadResponse.json();
+      if (!imageUploadResponse.ok) throw new Error(imageData.message);
+
+      // Then create post with image URL
+      const createPostResponse = await fetch(
+        "http://localhost:5000/api/posts",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            imageUrl: imageData.url,
+            caption: postData.caption,
+            location: postData.location,
+          }),
+        }
+      );
+
+      const postResult = await createPostResponse.json();
+      if (!createPostResponse.ok) throw new Error(postResult.message);
+
+      navigate("/");
+    } catch (error) {
+      console.error("Error creating post:", error);
+      alert(error.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
-    <div className="scrollbar-hide">
-      <nav className="upload-nav bg-[#FAFAFA] dark:bg-[#121212] rounded-lg py-2">
-        <h2 className="text-2xl text-center font-[Poppins] dark:text-white"></h2>
-        <div className="upload-container flex justify-center">
-          <div className="upload-option flex justify-between items-center m-3 bg-white dark:bg-[#262626] border-2 dark:border-gray-700 py-1 px-3 rounded-full w-[80%] dark:text-white hover:bg-gray-600">
-            <button className="uppercase font-medium py-2 px-4 rounded-lg bg-gray-100 dark:bg-gray-700 text-black dark:text-white hover:bg-gray-200 dark:hover:bg-gray-600 transition-all">
-              Post
-            </button>
-            <button className="uppercase font-medium py-2 px-4 rounded-3xl hover:bg-gray-600 transition-all">
-              Story
-            </button>
-            <button className="uppercase font-medium py-2 px-4 rounded-3xl hover:bg-gray-600 transition-all">
-              Reel
-            </button>
-            <button className="uppercase font-medium py-2 px-4 rounded-3xl hover:bg-gray-600 transition-all">
-              Profile
-            </button>
+    <div className="min-h-screen bg-gray-50 dark:bg-[#121212] py-8 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-3xl mx-auto">
+        {/* Tabs */}
+        <div className="bg-white dark:bg-[#262626] rounded-xl shadow-sm mb-8">
+          <div className="flex justify-between items-center p-1 space-x-1">
+            {["post", "story", "reel"].map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`flex-1 py-3 px-4 rounded-lg font-medium text-sm transition-all ${
+                  activeTab === tab
+                    ? "bg-blue-500 text-white"
+                    : "text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700"
+                }`}
+              >
+                {tab.toUpperCase()}
+              </button>
+            ))}
           </div>
         </div>
-      </nav>
 
-      <div className="upload-main flex justify-center border-2 border-bg-gray-100 dark:border-gray-700">
-        <div className="upload-main-container w-full bg-[#FAFAFA] dark:bg-[#121212] rounded-lg p-4 flex flex-col justify-center items-center">
-          <div className="upload-main-container-header flex justify-between items-center">
-            <h2 className="text-2xl font-mono dark:text-white">Create Post</h2>
-          </div>
-          <div className="upload-main-container-body w-full max-w-2xl">
-            <div className="upload-main-container-body-input">
-              <div className="upload-post-input flex items-center gap-5 my-5">
-                <div className="upload-post-img w-14 h-14 rounded-full bg-slate-300 dark:bg-gray-700 flex justify-center items-center">
-                  <IoLink className="text-4xl m-3 dark:text-gray-400" />
-                </div>
-                <input
-                  type="text"
-                  value={postData.profileImage}
-                  onChange={(e) => handleInputChange(e, "profileImage")}
-                  placeholder="Add Profile Image Link"
-                  className="flex-1 border-2 border-gray-600 dark:border-gray-500 rounded-lg p-2 pr-8 bg-transparent dark:text-white dark:placeholder-gray-400"
-                />
-                <CgEnter className="text-4xl dark:text-gray-400" />
-              </div>
+        {/* Main Content */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="bg-white dark:bg-[#262626] rounded-xl shadow-sm overflow-hidden"
+        >
+          <div className="p-6">
+            <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-8">
+              Create New Post
+            </h2>
 
-              <div className="upload-post-input flex items-center gap-5 my-5">
-                <div className="upload-post-img w-14 h-14 rounded-full bg-slate-300 dark:bg-gray-700 flex justify-center items-center">
-                  <FaUserCircle className="text-4xl m-3 dark:text-gray-400" />
-                </div>
-                <input
-                  type="text"
-                  value={postData.username}
-                  onChange={(e) => handleInputChange(e, "username")}
-                  placeholder="Add Profile Username"
-                  className="flex-1 border-2 border-gray-600 dark:border-gray-500 rounded-lg p-2 pr-8 bg-transparent dark:text-white dark:placeholder-gray-400"
-                />
-                <CgEnter className="text-4xl dark:text-gray-400" />
-              </div>
-
-              <div className="upload-post-input flex items-center gap-5 my-5">
-                <div className="upload-post-img w-14 h-14 rounded-full bg-slate-300 dark:bg-gray-700 flex justify-center items-center">
-                  <FaLocationDot className="text-4xl m-3 dark:text-gray-400" />
-                </div>
-                <input
-                  type="text"
-                  value={postData.location}
-                  onChange={(e) => handleInputChange(e, "location")}
-                  placeholder="Add Post Location"
-                  className="flex-1 border-2 border-gray-600 dark:border-gray-500 rounded-lg p-2 pr-8 bg-transparent dark:text-white dark:placeholder-gray-400"
-                />
-                <CgEnter className="text-4xl dark:text-gray-400" />
-              </div>
-
-              <div className="upload-post-img">
-                <div className="overflow-y-auto scrollbar-hide">
-                  <div className="upload-post-img-box bg-slate-300 dark:bg-gray-700 flex flex-col justify-center items-center rounded-md mt-10 p-4">
-                    <h2 className="text-2xl font-bold text-gray-500 dark:text-gray-300 mt-5">
-                      POST IMAGE
-                    </h2>
-                    <FcAddImage className="text-8xl my-4" />
-                    <input
-                      type="text"
-                      value={postData.postImage}
-                      onChange={(e) => handleInputChange(e, "postImage")}
-                      placeholder="Add Post Image Link"
-                      className="w-full border-2 border-gray-600 dark:border-gray-500 rounded-lg p-2 bg-transparent dark:text-white dark:placeholder-gray-400 bg-yellow-50"
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Image Upload Section */}
+              <div className="space-y-2">
+                <div
+                  onClick={() => fileInputRef.current?.click()}
+                  className={`border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-all ${
+                    preview
+                      ? "border-blue-500"
+                      : "border-gray-300 dark:border-gray-600"
+                  } hover:border-blue-500 dark:hover:border-blue-500`}
+                >
+                  {preview ? (
+                    <img
+                      src={preview}
+                      alt="Preview"
+                      className="mx-auto max-h-96 rounded-lg"
                     />
-                    <button className="upload-post-img-btn bg-green-600 py-2 px-6 mt-6 mb-4 rounded-md text-white text-[Poppins] text-xl font-bold hover:bg-green-700 transition-all">
-                      UPLOAD
-                    </button>
-                  </div>
+                  ) : (
+                    <div className="space-y-4">
+                      <FaImage className="w-12 h-12 mx-auto text-gray-400" />
+                      <div>
+                        <p className="text-base text-gray-600 dark:text-gray-300">
+                          Drag and drop or click to upload
+                        </p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                          Supported formats: JPG, PNG, GIF
+                        </p>
+                      </div>
+                    </div>
+                  )}
                 </div>
+                <input
+                  type="file"
+                  ref={fileInputRef}
+                  onChange={handleImageSelect}
+                  accept="image/*"
+                  className="hidden"
+                />
               </div>
 
-              <div className="my-16">
-                <label className="text-gray-700 dark:text-gray-300 text-lg mb-2 block">
-                  Description:
+              {/* Caption Input */}
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">
+                  Caption
+                </label>
+                <textarea
+                  value={postData.caption}
+                  onChange={(e) =>
+                    setPostData({ ...postData, caption: e.target.value })
+                  }
+                  rows={4}
+                  className="block w-full rounded-lg border border-gray-300 dark:border-gray-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm bg-white dark:bg-[#363636] text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 p-2 placeholder:p-3"
+                  placeholder="Write a caption..."
+                />
+              </div>
+
+              {/* Location Input */}
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">
+                  Location
+                </label>
+                <div className="relative rounded-lg shadow-sm">
+                  <div className="absolute inset-y-0 left-0 py-3 pl-3 flex items-center pointer-events-none">
+                    <MdLocationOn className="h-5 w-5 text-gray-400" />
+                  </div>
                   <input
                     type="text"
-                    value={postData.description}
-                    onChange={(e) => handleInputChange(e, "description")}
-                    placeholder="Write a caption..."
-                    className="w-full border-2 border-gray-600 dark:border-gray-500 rounded-lg p-4 mt-2 bg-transparent dark:text-white dark:placeholder-gray-400 min-h-[150px]"
+                    value={postData.location}
+                    onChange={(e) =>
+                      setPostData({ ...postData, location: e.target.value })
+                    }
+                    className="block w-full py-3 pl-10 rounded-lg border border-gray-300 dark:border-gray-600 focus:border-blue-500 focus:ring-blue-500 sm:text-sm bg-white dark:bg-[#363636] text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
+                    placeholder="Add location"
                   />
-                </label>
+                </div>
               </div>
 
-              <div className="flex justify-center w-full mb-14">
+              {/* Submit Button */}
+              <div className="pt-4">
                 <button
-                  onClick={handleSubmit}
-                  className="upload-post-btn bg-blue-500/80 py-3 px-8 rounded-md text-white text-[Poppins] text-xl font-bold hover:bg-gray-100 transition-all border-2 border-gray-600 hover:text-blue-500/80"
+                  type="submit"
+                  disabled={!postData.imageFile || isLoading}
+                  className={`w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${
+                    isLoading || !postData.imageFile
+                      ? "opacity-50 cursor-not-allowed"
+                      : ""
+                  }`}
                 >
-                  SUBMIT
+                  {isLoading ? (
+                    <>
+                      <FaSpinner className="animate-spin -ml-1 mr-2 h-4 w-4" />
+                      Posting...
+                    </>
+                  ) : (
+                    "Share Post"
+                  )}
                 </button>
               </div>
-            </div>
+            </form>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
-import Navbar from "../components/Home/Navbar.jsx";
-import Status from "../components/Home/Status.jsx";
-import Feed from "../components/Home/Feed/Feed.jsx";
+import Navbar from "../components/features/feed/Navbar";
+import Status from "../components/features/feed/Status";
+import Feed from "../components/features/feed/Feed/Feed";
 
 const Home = () => {
   return (

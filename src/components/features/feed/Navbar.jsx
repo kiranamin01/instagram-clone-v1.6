@@ -1,7 +1,7 @@
 import React from "react";
 import { BiCamera } from "react-icons/bi";
 import { RiSendPlaneFill } from "react-icons/ri";
-import DarkModeToggle from "../DarkModeToggle";
+import DarkModeToggle from "../../common/DarkModeToggle";
 
 const Navbar = () => {
   return (

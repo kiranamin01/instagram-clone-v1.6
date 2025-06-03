@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { BsThreeDots, BsHeart, BsHeartFill, BsChatLeft } from "react-icons/bs";
 import { RiShareForwardLine } from "react-icons/ri";
 import { MdVerified } from "react-icons/md";
-import ProfilePic from "../../../../assets/images/profile-pic-insta01.png";
+import ProfilePic from "../../../../../assets/images/profile-pic-insta01.png";
 
 const Post = ({
   id,

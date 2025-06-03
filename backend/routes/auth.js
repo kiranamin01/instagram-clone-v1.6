@@ -3,6 +3,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 import process from "process";
+import { auth } from "../middleware/auth.js";
 
 const router = express.Router();
 
@@ -76,6 +77,19 @@ router.post("/login", async (req, res) => {
         email: user.email,
       },
     });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// Get current user
+router.get("/me", auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.userId).select("-password");
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.json(user);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

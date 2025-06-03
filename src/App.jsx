@@ -9,10 +9,10 @@ import {
 } from "react-router-dom";
 import Profile from "./pages/Profile";
 import Liked from "./pages/Liked";
-import Footer from "./components/Footer";
 import Upload from "./pages/Upload";
-import Login from "./components/Auth/Login";
-import Register from "./components/Auth/Register";
+import Footer from "./components/layout/Footer";
+import Login from "./components/features/auth/Login";
+import Register from "./components/features/auth/Register";
 
 function App() {
   const isAuthenticated = !!localStorage.getItem("token");

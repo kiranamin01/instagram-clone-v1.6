@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import SearchBar from "../components/Search/SearchBar";
-import ImageGrid from "../components/Search/ImageGrid";
+import SearchBar from "../components/features/search/SearchBar";
+import ImageGrid from "../components/features/search/ImageGrid";
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState("");

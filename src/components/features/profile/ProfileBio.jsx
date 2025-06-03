@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ProfilePic from "../../assets/images/profile-pic-insta01.png";
+import ProfilePic from "../../../assets/images/profile-pic-insta01.png";
 
 const ProfileBio = () => {
   const [followersNo, setFollowersNo] = useState(999);

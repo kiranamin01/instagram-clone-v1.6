@@ -3,7 +3,7 @@ import { AiFillHome } from "react-icons/ai";
 import { BiSearch } from "react-icons/bi";
 import { BsPlusSquare } from "react-icons/bs";
 import { FaRegHeart } from "react-icons/fa";
-import ProfilePic from "../assets/images/profile-pic-insta01.png";
+import ProfilePic from "../../assets/images/profile-pic-insta01.png";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
