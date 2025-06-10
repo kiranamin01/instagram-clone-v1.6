@@ -1,6 +1,19 @@
 # Changelog
 
-## [v1.6.2] - 2025-04-09
+## [v1.6.3] - 2025-06-10
+
+### Search Feature Enhancement
+
+- Improved search functionality with tab-based navigation
+- Added dedicated grids for Photos, Accounts, Tags, and Places
+- Enhanced SearchBar component with active tab indicators
+- Implemented ImageGrid component with search query support
+- Added AccountGrid component for user profile display
+- Created PlaceGrid component for location-based search
+- Added TagGrid component for hashtag exploration
+- Integrated dark mode support with proper background colors
+- Enhanced responsive layout with max-width constraints
+- Improved search results display with proper spacing and layout
 
 ### Authentication System Implementation
 
