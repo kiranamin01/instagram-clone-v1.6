@@ -26,9 +26,9 @@ const Search = () => {
       />
       <div className="mt-28">
         {activeTab === "Photos" && <ImageGrid searchQuery={searchTerm} />}
-        {activeTab === "Accounts" && <AccountGrid />}
-        {activeTab === "Tags" && <TagGrid />}
-        {activeTab === "Places" && <PlaceGrid />}
+        {activeTab === "Accounts" && <AccountGrid searchQuery={searchTerm} />}
+        {activeTab === "Tags" && <TagGrid searchQuery={searchTerm} />}
+        {activeTab === "Places" && <PlaceGrid searchQuery={searchTerm} />}
       </div>
     </div>
   );
