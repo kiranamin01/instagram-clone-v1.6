@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { BsSearch } from "react-icons/bs";
 
-const SearchBar = ({ onSearch }) => {
-  const [searchQuery, setSearchQuery] = useState("");
+const SearchBar = ({ onSearch, activeTab, onTabChange }) => {
+  const [searchQuery, setSearchQuery] = React.useState("");
 
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
@@ -16,7 +16,7 @@ const SearchBar = ({ onSearch }) => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 bg-white border-b z-10 max-w-[468px] mx-auto dark:bg-[#121212] text-white">
-      <div className="p-4">
+      <section className="searchbar p-4">
         <div className="relative">
           <BsSearch className="absolute left-3 top-3 text-black dark:text-white" />
 
@@ -30,22 +30,52 @@ const SearchBar = ({ onSearch }) => {
             dark:bg-gray-600 dark:text-white"
           />
         </div>
-      </div>
+      </section>
 
-      <div className="flex gap-2 px-4 pb-3 overflow-x-auto scrollbar-hide text-black dark:text-white dark:bg-[#121212]">
-        <button className="px-3 py-1.5 bg-gray-200 rounded-full text-sm whitespace-nowrap border-b border-gray-100 border-2 dark:bg-gray-400">
-          Top
-        </button>
-        <button className="px-3 py-1.5 bg-gray-200 rounded-full text-sm whitespace-nowrap border-b border-gray-100 border-2 dark:bg-gray-400">
-          Accounts
-        </button>
-        <button className="px-3 py-1.5 bg-gray-200 rounded-full text-sm whitespace-nowrap border-b border-gray-100 border-2 dark:bg-gray-400">
-          Tags
-        </button>
-        <button className="px-3 py-1.5 bg-gray-200 rounded-full text-sm whitespace-nowrap border-b border-gray-100 border-2 dark:bg-gray-400">
-          Places
-        </button>
-      </div>
+      <section className="searchoption">
+        <div className="flex gap-2 px-4 pb-3 overflow-x-auto scrollbar-hide text-black dark:text-white dark:bg-[#121212]">
+          <button
+            onClick={() => onTabChange("Photos")}
+            className={`px-3 py-1.5 rounded-full text-sm whitespace-nowrap border-2 ${
+              activeTab === "Photos"
+                ? "bg-black text-white dark:bg-white dark:text-black"
+                : "bg-gray-200 dark:bg-gray-400"
+            }`}
+          >
+            Photos
+          </button>
+          <button
+            onClick={() => onTabChange("Accounts")}
+            className={`px-3 py-1.5 rounded-full text-sm whitespace-nowrap border-2 ${
+              activeTab === "Accounts"
+                ? "bg-black text-white dark:bg-white dark:text-black"
+                : "bg-gray-200 dark:bg-gray-400"
+            }`}
+          >
+            Accounts
+          </button>
+          <button
+            onClick={() => onTabChange("Tags")}
+            className={`px-3 py-1.5 rounded-full text-sm whitespace-nowrap border-2 ${
+              activeTab === "Tags"
+                ? "bg-black text-white dark:bg-white dark:text-black"
+                : "bg-gray-200 dark:bg-gray-400"
+            }`}
+          >
+            Tags
+          </button>
+          <button
+            onClick={() => onTabChange("Places")}
+            className={`px-3 py-1.5 rounded-full text-sm whitespace-nowrap border-2 ${
+              activeTab === "Places"
+                ? "bg-black text-white dark:bg-white dark:text-black"
+                : "bg-gray-200 dark:bg-gray-400"
+            }`}
+          >
+            Places
+          </button>
+        </div>
+      </section>
     </nav>
   );
 };
