@@ -3,10 +3,12 @@ import UserProfilePic from "../../../assets/images/profile-pics/viratkholi.jpg";
 import GoVerified from "../../../assets/icons/verified.png";
 import { userProfileData } from "../../../data/userProfileData";
 import ConvertNtoS from "../../../utils/ConvertNtoS";
+import { useNavigate } from "react-router-dom";
 
 const AccountGrid = ({ searchQuery }) => {
   const [visibleProfiles, setVisibleProfiles] = useState(8);
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const filteredUsers = userProfileData.filter((user) => {
     if (!searchQuery) return true;
@@ -24,6 +26,10 @@ const AccountGrid = ({ searchQuery }) => {
     setIsLoading(false);
   };
 
+  const handleSearchProfile = (user) => {
+    navigate(`/profile/${user.instagram_id}`, { state: { userData: user } });
+  };
+
   return (
     <>
       <section className="grid grid-cols-1 gap-4 p-4">
@@ -38,7 +44,8 @@ const AccountGrid = ({ searchQuery }) => {
             {filteredUsers.slice(0, visibleProfiles).map((user) => (
               <div
                 key={user.instagram_id}
-                className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors cursor-pointer"
+                onClick={() => handleSearchProfile(user)}
+                className="searchprofile flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors cursor-pointer"
               >
                 <img
                   src={UserProfilePic}

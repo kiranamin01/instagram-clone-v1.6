@@ -6,11 +6,13 @@ export const userProfileData = [
     following_count: 150,
     user_bio:
       "Indian Cricketer 🇮🇳 | Husband, Father, Leader. 🙏🏼 Live life king size.",
-    user_profile_pic: "https://example.com/profiles/virat_kohli_profile.jpg",
+    user_profile_pic:
+      "https://i.pinimg.com/736x/13/a5/96/13a596ba20d3b7a452e70a0142cafe25.jpg",
     user_posts: [
       {
         post_id: "vk_post001",
-        image_url: "https://example.com/posts/vk_match_win.jpg",
+        image_url:
+          "https://i.pinimg.com/736x/11/b3/23/11b323a90f9180396eec7c44222e453b.jpg",
         caption:
           "Incredible team effort today! Proud of the boys. On to the next challenge! #TeamIndia #Cricket",
         likes_count: 8500000,
@@ -56,11 +58,12 @@ export const userProfileData = [
     following_count: 250,
     user_bio: "Actor 🎬 | Animal Lover 🐾 | Dreamer ✨",
     user_profile_pic:
-      "https://example.com/profiles/shraddha_kapoor_profile.jpg",
+      "https://i.pinimg.com/736x/1a/f6/7b/1af67b6b79b4c707e10ee1654463c55b.jpg",
     user_posts: [
       {
         post_id: "sk_post001",
-        image_url: "https://example.com/posts/sk_shoot.jpg",
+        image_url:
+          "https://i.pinimg.com/736x/7c/47/18/7c4718ad88fbb7126d52bc92c1d943dd.jpg",
         caption:
           "On set and loving every moment! Can't wait for you all to see this project. 😊",
         likes_count: 2800000,
@@ -90,11 +93,12 @@ export const userProfileData = [
     user_bio:
       "Actor. Producer. Activist. UNICEF Goodwill Ambassador. Mom. Wife. ✨",
     user_profile_pic:
-      "https://example.com/profiles/priyanka_chopra_profile.jpg",
+      "https://i.pinimg.com/736x/99/d9/7c/99d97c1a5bf2388bcee866065f70a034.jpg",
     user_posts: [
       {
         post_id: "pcj_post001",
-        image_url: "https://example.com/posts/pcj_event.jpg",
+        image_url:
+          "https://i.pinimg.com/736x/67/16/bc/6716bcdf2b19154c86b4c660c06358d1.jpg",
         caption:
           "An incredible evening at the Met Gala! Honored to be part of such a creative community. #MetGala #Fashion",
         likes_count: 3500000,
@@ -128,11 +132,13 @@ export const userProfileData = [
     followers_count: 92500000,
     following_count: 100,
     user_bio: "Prime Minister of India 🇮🇳. Bharat Mata Ki Jai!",
-    user_profile_pic: "https://example.com/profiles/narendra_modi_profile.jpg",
+    user_profile_pic:
+      "https://i.pinimg.com/236x/41/9c/e6/419ce6f5041e2200924e22dfe2afd15c.jpg",
     user_posts: [
       {
         post_id: "nm_post001",
-        image_url: "https://example.com/posts/nm_meeting.jpg",
+        image_url:
+          "https://i.pinimg.com/736x/9c/73/26/9c7326529f50801801927900b91ce339.jpg",
         caption:
           "Had a fruitful discussion on national development projects. Committed to building a stronger India. #Vikas #NewIndia",
         likes_count: 5500000,
@@ -155,11 +161,13 @@ export const userProfileData = [
     followers_count: 86000000,
     following_count: 350,
     user_bio: "Actor 🎭 | Producer 🎬 | Mama 🌸",
-    user_profile_pic: "https://example.com/profiles/alia_bhatt_profile.jpg",
+    user_profile_pic:
+      "https://i.pinimg.com/236x/0a/18/a7/0a18a7928857efde5ec7cec0261a31e2.jpg",
     user_posts: [
       {
         post_id: "ab_post001",
-        image_url: "https://example.com/posts/ab_photoshoot.jpg",
+        image_url:
+          "https://i.pinimg.com/736x/58/c2/91/58c2918a719c75360884ac965ac3b2f1.jpg",
         caption:
           "Feeling the sunshine and good vibes! ☀️ Loving this new shoot.",
         likes_count: 4100000,

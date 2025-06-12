@@ -8,6 +8,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import Profile from "./pages/Profile";
+import SearchProfile from "./components/Profile/SearchProfile";
 import Liked from "./pages/Liked";
 import Upload from "./pages/Upload";
 import Footer from "./components/layout/Footer";
@@ -70,6 +71,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <Profile />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/profile/:instagram_id"
+            element={
+              <ProtectedRoute>
+                <SearchProfile />
               </ProtectedRoute>
             }
           />

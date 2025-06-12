@@ -1,13 +1,9 @@
 import React from "react";
-
 import { logout } from "../../../utils/auth";
 
-const ProfileNav = () => {
+const ProfileNav = ({ selectedUser }) => {
   return (
-    <nav
-      className="sticky top-0 flex justify-between items-center p-4 border-b bg-[#FAFAFA]
-    dark:bg-[#121212] dark:border-gray-800 dark:text-white"
-    >
+    <nav className="sticky top-0 flex justify-between items-center p-4 border-b bg-[#FAFAFA] dark:bg-[#121212] dark:border-gray-800 dark:text-white">
       <div className="text-xs font-semibold">
         <button
           onClick={logout}
@@ -17,7 +13,7 @@ const ProfileNav = () => {
         </button>
       </div>
       <div className="text-xl font-bold">
-        <span className="mr-2">kiranamin.img</span>
+        <span className="mr-2">{selectedUser?.instagram_id}</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-5 w-5 inline-block"
