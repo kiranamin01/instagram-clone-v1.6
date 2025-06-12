@@ -1,5 +1,20 @@
 # Changelog
 
+## [v1.6.4] - 2025-06-13
+
+### Search and Profile Integration Enhancement
+
+- Added dynamic profile navigation from AccountGrid to SearchProfile
+- Implemented route handling for `/profile/:instagram_id` pattern
+- Enhanced user data flow between SearchProfile and ProfileNav components
+- Added fallback to first user profile when no specific user is found
+- Improved dark mode support across profile components
+- Fixed user data rendering in ProfileNav component
+- Enhanced profile data handling with proper state management
+- Maintained responsive layout and styling consistency
+- Added proper error handling for profile navigation
+- Integrated authentication checks for protected profile routes
+
 ## [v1.6.3] - 2025-06-10
 
 ### Search Feature Enhancement
