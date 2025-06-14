@@ -12,6 +12,16 @@ const SearchProfile = () => {
   const location = useLocation();
   const [selectedUser, setSelectedUser] = useState(null);
 
+  const [isFollowed, setIsFollowed] = useState(false);
+
+  const handlefollowbtn = () => {
+    const followbtn = document.querySelector(".followbtn");
+    followbtn.classList.toggle("unfollowingbtn");
+    followbtn.classList.toggle("followingbtn");
+
+    setIsFollowed(!isFollowed);
+  };
+
   useEffect(() => {
     // If user data is passed through navigation state, use it
     if (location.state?.userData) {
@@ -30,7 +40,7 @@ const SearchProfile = () => {
   if (!selectedUser) return null;
 
   return (
-    <div className="max-w-[470px] mx-auto bg-white min-h-screen overflow-y-auto scrollbar-hide dark:bg-[#121212]">
+    <section className="max-w-[470px] mx-auto bg-white min-h-screen overflow-y-auto scrollbar-hide dark:bg-[#121212]">
       <ProfileNav selectedUser={selectedUser} />
       <section className="profile-bio p-4 flex flex-col border-b bg-[#FAFAFA] dark:bg-[#121212] dark:border-gray-800">
         <div className="profile-bio-info flex items-center dark:text-white">
@@ -74,13 +84,21 @@ const SearchProfile = () => {
             {selectedUser.user_bio}
           </div>
         </div>
-        <button className="mt-4 px-6 py-2 rounded-lg w-full border border-gray-200 font-semibold dark:bg-[#121212] dark:text-white">
-          Follow
-        </button>
+        <div className="flex gap-2 mt-4 text-sm">
+          <button
+            onClick={handlefollowbtn}
+            className="followbtn unfollowingbtn"
+          >
+            {isFollowed ? "Following" : "Follow"}
+          </button>
+          <button className="flex-1 px-6 py-2 rounded-lg border border-gray-200 font-semibold hover:bg-gray-50 transition dark:bg-[#121212] dark:text-white dark:hover:bg-[#1c1c1c] dark:border-gray-800">
+            Message
+          </button>
+        </div>
       </section>
       <ProfileStatusSave />
       <ProfileGallery posts={selectedUser.user_posts} />
-    </div>
+    </section>
   );
 };
 

@@ -10,6 +10,12 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none; /* Chrome, Safari and Opera */
   }
+  .followingbtn {
+    @apply text-green-500 rounded-lg flex-1 px-3 py-1 text-sm font-semibold border border-gray-200 hover:bg-gray-50 transition dark:bg-[#121212] dark:text-green-500 dark:hover:bg-[#1c1c1c] dark:border-gray-800;
+  }
+  .unfollowingbtn {
+    @apply bg-blue-600 border border-gray-200 text-white rounded-full text-sm font-semibold flex-1 px-6 py-2 hover:bg-[#1877F2] transition dark:border-gray-800;
+  }
 }
 
 /* Add dark mode background */
